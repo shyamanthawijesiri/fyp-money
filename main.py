@@ -15,7 +15,7 @@ fs = st.file_uploader('upload Image',['jpg','png','jpeg'])
 save_path = 'images/upload/'
 
 isDir = os.path.isdir(save_path)
-t=2
+
 if not isDir :
     os.makedirs(save_path,0o666)
 
@@ -41,10 +41,10 @@ if fs is not None:
             st.write("")
 
         input_img = os.path.join(save_path,fs.name)
+        money_img = cv2.imread(input_img)
 
-
-        result = model.moneyClassification(input_img)
-        if result == 0:
+        result = model.moneyClassification(money_img)
+        if result == 1:
             new_title = '<p style="color:Green; font-size: 32px;font-weight:bold; text-align: center;">Valid Money</p>'
             st.markdown(new_title, unsafe_allow_html=True)
 

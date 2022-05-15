@@ -48,7 +48,7 @@ def moneyClassification(img):
 
     create_csv(img)
     test = pd.read_csv('inputImage.csv', sep=',')
-    fileName = 'MODEL_NAME'
+    fileName = 'RF'
     load_model = pickle.load(open(fileName, 'rb'))
     results = load_model.predict(test)
     return results
